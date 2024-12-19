@@ -54,7 +54,7 @@ unsig_mask[tril_indices] = pvals > 0.05
 r_mat[unsig_mask] = np.NaN
 np.fill_diagonal(r_mat, np.NaN)
 
-# ### 3. Plot the correlation matrix
+### 3. Plot the correlation matrix
 plt.rcParams.update({'font.size': 12})
 fig, ax = plt.subplots(1, 1, figsize=(8, 8), gridspec_kw={"hspace": 0.0, "wspace": 0.0})
 ax = sns.heatmap(data=r_mat, vmin=-1, vmax=1, ax=ax, cbar=True, square=True, cmap="RdBu_r",

@@ -43,7 +43,7 @@ n_factors = 4
 scores = factor_analyzer.transform(X)
 for i in range(n_factors):
     df = pd.DataFrame(scores[:, i], index=regions, columns=[f"F{i+1}"])
-    df.to_csv(os.path.join("diffusion_neuromaps", "data", "glasser", f"F{i+1}_glasser_ave.csv"))
+    df.to_csv(os.path.join("diffusion_neuromaps", "data", "glasser", "ave", f"F{i+1}_glasser_ave.csv"))
     plot_glasser_map(scores[:, i], size=(1600, 400), cmap="Reds", label_text=None, color_bar=False,
     nan_color=(255, 255, 255, 1), zoom=1.25, transparent_bg=False, interactive=False,
     screenshot=True, filename=os.path.join("diffusion_neuromaps", "plots", "glasser", f"F{i+1}_glasser_ave.png"))
