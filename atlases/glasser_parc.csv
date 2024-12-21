@@ -1,0 +1,361 @@
+region,economo,mesulam,sa,yeo
+V1_L,granular,idiotypic,sensorimotor,visual
+MST_L,parietal,unimodal,sensorimotor,visual
+V6_L,parietal,unimodal,sensorimotor,visual
+V2_L,parietal,idiotypic,sensorimotor,visual
+V3_L,parietal,idiotypic,sensorimotor,visual
+V4_L,parietal,unimodal,sensorimotor,visual
+V8_L,parietal,unimodal,sensorimotor,visual
+4_L,agranular,idiotypic,sensorimotor,somatosensory
+3b_L,granular,idiotypic,sensorimotor,somatosensory
+FEF_L,agranular,idiotypic,middle,dorsal attention
+PEF_L,agranular,idiotypic,middle,dorsal attention
+55b_L,agranular,idiotypic,middle,ventral attention
+V3A_L,parietal,unimodal,sensorimotor,visual
+RSC_L,granular,paralimbic,sensorimotor,default mode
+POS2_L,frontal,heteromodal,middle,frontoparietal
+V7_L,parietal,unimodal,sensorimotor,visual
+IPS1_L,frontal,heteromodal,sensorimotor,dorsal attention
+FFC_L,frontal,unimodal,middle,visual
+V3B_L,parietal,unimodal,sensorimotor,visual
+LO1_L,parietal,unimodal,sensorimotor,visual
+LO2_L,parietal,unimodal,sensorimotor,visual
+PIT_L,parietal,unimodal,sensorimotor,visual
+MT_L,parietal,unimodal,sensorimotor,visual
+A1_L,granular,unimodal,sensorimotor,somatosensory
+PSL_L,parietal,unimodal,middle,ventral attention
+SFL_L,agranular,unimodal,association,default mode
+PCV_L,frontal,heteromodal,middle,dorsal attention
+STV_L,frontal,unimodal,middle,ventral attention
+7Pm_L,frontal,heteromodal,sensorimotor,frontoparietal
+7m_L,frontal,heteromodal,middle,default mode
+POS1_L,frontal,heteromodal,middle,default mode
+23d_L,agranular,paralimbic,association,default mode
+v23ab_L,frontal,paralimbic,middle,default mode
+d23ab_L,agranular,paralimbic,association,default mode
+31pv_L,frontal,paralimbic,association,default mode
+5m_L,frontal,idiotypic,sensorimotor,somatosensory
+5mv_L,frontal,unimodal,sensorimotor,ventral attention
+23c_L,frontal,unimodal,middle,ventral attention
+5L_L,granular,unimodal,sensorimotor,somatosensory
+24dd_L,agranular,idiotypic,sensorimotor,somatosensory
+24dv_L,agranular,unimodal,middle,somatosensory
+7AL_L,frontal,heteromodal,sensorimotor,dorsal attention
+SCEF_L,agranular,unimodal,middle,ventral attention
+6ma_L,agranular,unimodal,middle,ventral attention
+7Am_L,frontal,heteromodal,sensorimotor,dorsal attention
+7Pl_L,frontal,heteromodal,sensorimotor,dorsal attention
+7PC_L,frontal,heteromodal,sensorimotor,dorsal attention
+LIPv_L,frontal,heteromodal,sensorimotor,dorsal attention
+VIP_L,frontal,heteromodal,sensorimotor,dorsal attention
+MIP_L,frontal,heteromodal,sensorimotor,dorsal attention
+1_L,granular,idiotypic,sensorimotor,somatosensory
+2_L,frontal,unimodal,sensorimotor,somatosensory
+3a_L,frontal,idiotypic,sensorimotor,somatosensory
+6d_L,agranular,idiotypic,sensorimotor,somatosensory
+6mp_L,agranular,idiotypic,sensorimotor,somatosensory
+6v_L,agranular,idiotypic,sensorimotor,somatosensory
+p24pr_L,agranular,paralimbic,middle,ventral attention
+33pr_L,agranular,paralimbic,middle,ventral attention
+a24pr_L,agranular,paralimbic,middle,ventral attention
+p32pr_L,agranular,unimodal,middle,ventral attention
+a24_L,agranular,paralimbic,association,default mode
+d32_L,frontal,heteromodal,association,default mode
+8BM_L,frontal,heteromodal,association,frontoparietal
+p32_L,polar,heteromodal,association,default mode
+10r_L,polar,heteromodal,association,default mode
+47m_L,polar,paralimbic,association,default mode
+8Av_L,agranular,unimodal,association,frontoparietal
+8Ad_L,frontal,heteromodal,association,default mode
+9m_L,frontal,heteromodal,association,default mode
+8BL_L,frontal,heteromodal,association,default mode
+9p_L,frontal,heteromodal,association,default mode
+10d_L,frontal,heteromodal,association,default mode
+8C_L,agranular,heteromodal,association,frontoparietal
+44_L,frontal,heteromodal,association,frontoparietal
+45_L,frontal,heteromodal,association,default mode
+47l_L,polar,heteromodal,association,default mode
+a47r_L,frontal,heteromodal,association,frontoparietal
+6r_L,agranular,idiotypic,middle,ventral attention
+IFJa_L,frontal,heteromodal,association,frontoparietal
+IFJp_L,agranular,unimodal,association,dorsal attention
+IFSp_L,frontal,heteromodal,middle,frontoparietal
+IFSa_L,frontal,heteromodal,association,frontoparietal
+p9-46v_L,frontal,heteromodal,association,frontoparietal
+46_L,frontal,heteromodal,association,frontoparietal
+a9-46v_L,frontal,heteromodal,association,frontoparietal
+9-46d_L,frontal,heteromodal,association,frontoparietal
+9a_L,frontal,heteromodal,association,default mode
+10v_L,polar,heteromodal,association,limbic
+a10p_L,frontal,heteromodal,association,frontoparietal
+10pp_L,polar,heteromodal,association,limbic
+11l_L,polar,heteromodal,association,frontoparietal
+13l_L,polar,paralimbic,association,limbic
+OFC_L,polar,paralimbic,middle,limbic
+47s_L,polar,paralimbic,association,default mode
+LIPd_L,frontal,heteromodal,middle,dorsal attention
+6a_L,agranular,idiotypic,middle,dorsal attention
+i6-8_L,agranular,unimodal,association,frontoparietal
+s6-8_L,agranular,unimodal,association,frontoparietal
+43_L,agranular,unimodal,sensorimotor,somatosensory
+OP4_L,parietal,unimodal,sensorimotor,somatosensory
+OP1_L,parietal,heteromodal,sensorimotor,somatosensory
+OP2-3_L,parietal,heteromodal,sensorimotor,somatosensory
+52_L,granular,paralimbic,middle,somatosensory
+RI_L,parietal,unimodal,sensorimotor,somatosensory
+PFcm_L,parietal,unimodal,middle,somatosensory
+PoI2_L,frontal,paralimbic,middle,ventral attention
+TA2_L,parietal,unimodal,middle,somatosensory
+FOP4_L,frontal,heteromodal,middle,ventral attention
+MI_L,frontal,paralimbic,association,ventral attention
+Pir_L,frontal,paralimbic,sensorimotor,ventral attention
+AVI_L,frontal,paralimbic,association,frontoparietal
+AAIC_L,frontal,paralimbic,middle,ventral attention
+FOP1_L,agranular,unimodal,middle,ventral attention
+FOP3_L,frontal,paralimbic,middle,ventral attention
+FOP2_L,agranular,unimodal,sensorimotor,somatosensory
+PFt_L,frontal,heteromodal,middle,dorsal attention
+AIP_L,frontal,heteromodal,middle,dorsal attention
+EC_L,agranular,paralimbic,middle,limbic
+PreS_L,parietal,paralimbic,sensorimotor,visual
+H_L,granular,paralimbic,middle,limbic
+ProS_L,granular,idiotypic,sensorimotor,visual
+PeEc_L,frontal,paralimbic,middle,limbic
+STGa_L,parietal,paralimbic,association,default mode
+PBelt_L,parietal,unimodal,sensorimotor,somatosensory
+A5_L,frontal,unimodal,middle,somatosensory
+PHA1_L,parietal,paralimbic,middle,visual
+PHA3_L,frontal,heteromodal,middle,visual
+STSda_L,parietal,unimodal,association,default mode
+STSdp_L,frontal,unimodal,middle,default mode
+STSvp_L,frontal,heteromodal,association,default mode
+TGd_L,frontal,paralimbic,association,limbic
+TE1a_L,frontal,heteromodal,association,default mode
+TE1p_L,frontal,heteromodal,association,frontoparietal
+TE2a_L,frontal,unimodal,association,limbic
+TF_L,frontal,unimodal,middle,limbic
+TE2p_L,frontal,unimodal,middle,dorsal attention
+PHT_L,frontal,heteromodal,association,dorsal attention
+PH_L,parietal,unimodal,middle,dorsal attention
+TPOJ1_L,frontal,unimodal,middle,ventral attention
+TPOJ2_L,parietal,heteromodal,middle,dorsal attention
+TPOJ3_L,parietal,unimodal,sensorimotor,dorsal attention
+DVT_L,frontal,unimodal,sensorimotor,visual
+PGp_L,parietal,unimodal,middle,dorsal attention
+IP2_L,frontal,heteromodal,middle,frontoparietal
+IP1_L,frontal,heteromodal,middle,frontoparietal
+IP0_L,parietal,unimodal,sensorimotor,dorsal attention
+PFop_L,parietal,unimodal,middle,ventral attention
+PF_L,parietal,heteromodal,association,ventral attention
+PFm_L,parietal,heteromodal,association,frontoparietal
+PGi_L,parietal,heteromodal,association,default mode
+PGs_L,parietal,heteromodal,association,default mode
+V6A_L,frontal,unimodal,sensorimotor,visual
+VMV1_L,parietal,idiotypic,sensorimotor,visual
+VMV3_L,parietal,unimodal,sensorimotor,visual
+PHA2_L,parietal,heteromodal,middle,visual
+V4t_L,parietal,unimodal,sensorimotor,visual
+FST_L,parietal,unimodal,sensorimotor,dorsal attention
+V3CD_L,parietal,unimodal,sensorimotor,visual
+LO3_L,parietal,unimodal,sensorimotor,visual
+VMV2_L,parietal,idiotypic,sensorimotor,visual
+31pd_L,frontal,heteromodal,middle,default mode
+31a_L,frontal,heteromodal,association,frontoparietal
+VVC_L,frontal,unimodal,sensorimotor,visual
+25_L,agranular,paralimbic,association,limbic
+s32_L,frontal,paralimbic,association,default mode
+pOFC_L,polar,paralimbic,middle,limbic
+PoI1_L,frontal,paralimbic,middle,ventral attention
+Ig_L,frontal,paralimbic,sensorimotor,somatosensory
+FOP5_L,frontal,paralimbic,middle,ventral attention
+p10p_L,frontal,heteromodal,association,frontoparietal
+p47r_L,frontal,heteromodal,association,frontoparietal
+TGv_L,frontal,paralimbic,middle,limbic
+MBelt_L,granular,unimodal,middle,somatosensory
+LBelt_L,parietal,idiotypic,sensorimotor,somatosensory
+A4_L,frontal,unimodal,sensorimotor,somatosensory
+STSva_L,frontal,unimodal,association,default mode
+TE1m_L,frontal,heteromodal,association,default mode
+PI_L,parietal,paralimbic,middle,ventral attention
+a32pr_L,frontal,heteromodal,association,frontoparietal
+p24_L,agranular,paralimbic,association,default mode
+V1_R,granular,idiotypic,sensorimotor,visual
+MST_R,parietal,unimodal,sensorimotor,dorsal attention
+V6_R,parietal,unimodal,sensorimotor,visual
+V2_R,parietal,idiotypic,sensorimotor,visual
+V3_R,parietal,idiotypic,sensorimotor,visual
+V4_R,parietal,unimodal,sensorimotor,visual
+V8_R,parietal,unimodal,sensorimotor,visual
+4_R,agranular,idiotypic,sensorimotor,somatosensory
+3b_R,frontal,idiotypic,sensorimotor,somatosensory
+FEF_R,agranular,idiotypic,middle,dorsal attention
+PEF_R,agranular,idiotypic,middle,dorsal attention
+55b_R,agranular,idiotypic,middle,somatosensory
+V3A_R,parietal,unimodal,sensorimotor,visual
+RSC_R,granular,paralimbic,sensorimotor,default mode
+POS2_R,frontal,heteromodal,middle,default mode
+V7_R,frontal,unimodal,sensorimotor,visual
+IPS1_R,frontal,unimodal,sensorimotor,dorsal attention
+FFC_R,frontal,unimodal,middle,visual
+V3B_R,parietal,unimodal,sensorimotor,visual
+LO1_R,parietal,unimodal,sensorimotor,visual
+LO2_R,parietal,unimodal,sensorimotor,visual
+PIT_R,parietal,unimodal,sensorimotor,visual
+MT_R,parietal,unimodal,sensorimotor,visual
+A1_R,parietal,idiotypic,sensorimotor,somatosensory
+PSL_R,parietal,unimodal,middle,ventral attention
+SFL_R,agranular,unimodal,association,default mode
+PCV_R,frontal,heteromodal,middle,default mode
+STV_R,frontal,unimodal,middle,default mode
+7Pm_R,frontal,heteromodal,middle,frontoparietal
+7m_R,frontal,heteromodal,middle,default mode
+POS1_R,parietal,heteromodal,middle,default mode
+23d_R,agranular,paralimbic,association,default mode
+v23ab_R,agranular,heteromodal,middle,default mode
+d23ab_R,agranular,paralimbic,association,default mode
+31pv_R,agranular,heteromodal,middle,default mode
+5m_R,frontal,idiotypic,sensorimotor,somatosensory
+5mv_R,frontal,idiotypic,sensorimotor,ventral attention
+23c_R,agranular,idiotypic,middle,ventral attention
+5L_R,frontal,unimodal,sensorimotor,somatosensory
+24dd_R,agranular,idiotypic,sensorimotor,somatosensory
+24dv_R,agranular,unimodal,middle,somatosensory
+7AL_R,frontal,heteromodal,sensorimotor,dorsal attention
+SCEF_R,agranular,unimodal,middle,ventral attention
+6ma_R,agranular,unimodal,middle,ventral attention
+7Am_R,frontal,heteromodal,sensorimotor,dorsal attention
+7Pl_R,frontal,heteromodal,sensorimotor,dorsal attention
+7PC_R,frontal,heteromodal,sensorimotor,dorsal attention
+LIPv_R,frontal,heteromodal,sensorimotor,dorsal attention
+VIP_R,frontal,heteromodal,sensorimotor,dorsal attention
+MIP_R,frontal,heteromodal,sensorimotor,dorsal attention
+1_R,granular,idiotypic,sensorimotor,somatosensory
+2_R,frontal,unimodal,sensorimotor,somatosensory
+3a_R,frontal,idiotypic,sensorimotor,somatosensory
+6d_R,agranular,idiotypic,sensorimotor,somatosensory
+6mp_R,agranular,idiotypic,sensorimotor,somatosensory
+6v_R,agranular,idiotypic,middle,somatosensory
+p24pr_R,agranular,paralimbic,middle,ventral attention
+33pr_R,agranular,paralimbic,middle,frontoparietal
+a24pr_R,agranular,paralimbic,association,ventral attention
+p32pr_R,agranular,paralimbic,middle,ventral attention
+a24_R,agranular,paralimbic,association,default mode
+d32_R,frontal,heteromodal,association,default mode
+8BM_R,frontal,heteromodal,association,frontoparietal
+p32_R,polar,paralimbic,association,default mode
+10r_R,polar,heteromodal,association,default mode
+47m_R,polar,paralimbic,association,default mode
+8Av_R,agranular,unimodal,association,default mode
+8Ad_R,frontal,heteromodal,association,default mode
+9m_R,frontal,heteromodal,association,default mode
+8BL_R,frontal,heteromodal,association,default mode
+9p_R,frontal,heteromodal,association,default mode
+10d_R,frontal,heteromodal,association,default mode
+8C_R,frontal,unimodal,association,frontoparietal
+44_R,frontal,unimodal,association,default mode
+45_R,frontal,heteromodal,association,default mode
+47l_R,polar,heteromodal,association,default mode
+a47r_R,frontal,heteromodal,association,default mode
+6r_R,agranular,idiotypic,middle,ventral attention
+IFJa_R,frontal,unimodal,middle,frontoparietal
+IFJp_R,agranular,unimodal,association,dorsal attention
+IFSp_R,frontal,unimodal,middle,frontoparietal
+IFSa_R,frontal,heteromodal,association,frontoparietal
+p9-46v_R,frontal,heteromodal,association,frontoparietal
+46_R,frontal,heteromodal,association,frontoparietal
+a9-46v_R,frontal,heteromodal,association,frontoparietal
+9-46d_R,frontal,heteromodal,association,frontoparietal
+9a_R,frontal,heteromodal,association,default mode
+10v_R,polar,heteromodal,association,limbic
+a10p_R,polar,heteromodal,association,default mode
+10pp_R,polar,heteromodal,association,limbic
+11l_R,polar,heteromodal,association,frontoparietal
+13l_R,polar,paralimbic,association,limbic
+OFC_R,polar,paralimbic,association,limbic
+47s_R,polar,paralimbic,association,default mode
+LIPd_R,frontal,heteromodal,middle,dorsal attention
+6a_R,agranular,unimodal,middle,dorsal attention
+i6-8_R,agranular,unimodal,association,frontoparietal
+s6-8_R,agranular,unimodal,association,default mode
+43_R,agranular,unimodal,middle,ventral attention
+OP4_R,parietal,unimodal,sensorimotor,somatosensory
+OP1_R,parietal,heteromodal,sensorimotor,somatosensory
+OP2-3_R,parietal,heteromodal,sensorimotor,somatosensory
+52_R,frontal,unimodal,middle,somatosensory
+RI_R,parietal,unimodal,sensorimotor,somatosensory
+PFcm_R,parietal,unimodal,sensorimotor,ventral attention
+PoI2_R,frontal,paralimbic,middle,ventral attention
+TA2_R,granular,unimodal,middle,somatosensory
+FOP4_R,frontal,heteromodal,middle,ventral attention
+MI_R,frontal,paralimbic,association,ventral attention
+Pir_R,frontal,paralimbic,middle,limbic
+AVI_R,frontal,paralimbic,association,frontoparietal
+AAIC_R,frontal,paralimbic,association,default mode
+FOP1_R,agranular,heteromodal,middle,ventral attention
+FOP3_R,frontal,heteromodal,middle,ventral attention
+FOP2_R,agranular,unimodal,sensorimotor,somatosensory
+PFt_R,frontal,unimodal,middle,dorsal attention
+AIP_R,frontal,heteromodal,middle,dorsal attention
+EC_R,parietal,paralimbic,middle,limbic
+PreS_R,parietal,paralimbic,sensorimotor,default mode
+H_R,granular,paralimbic,middle,limbic
+ProS_R,granular,idiotypic,sensorimotor,visual
+PeEc_R,frontal,paralimbic,middle,limbic
+STGa_R,parietal,paralimbic,association,default mode
+PBelt_R,frontal,unimodal,sensorimotor,somatosensory
+A5_R,frontal,unimodal,middle,somatosensory
+PHA1_R,parietal,paralimbic,middle,default mode
+PHA3_R,frontal,unimodal,middle,visual
+STSda_R,frontal,unimodal,association,default mode
+STSdp_R,frontal,unimodal,middle,default mode
+STSvp_R,frontal,unimodal,association,default mode
+TGd_R,frontal,paralimbic,association,limbic
+TE1a_R,frontal,heteromodal,association,default mode
+TE1p_R,frontal,heteromodal,association,default mode
+TE2a_R,frontal,unimodal,association,limbic
+TF_R,frontal,unimodal,middle,limbic
+TE2p_R,frontal,unimodal,middle,dorsal attention
+PHT_R,frontal,heteromodal,association,dorsal attention
+PH_R,frontal,unimodal,middle,dorsal attention
+TPOJ1_R,frontal,heteromodal,middle,somatosensory
+TPOJ2_R,frontal,heteromodal,middle,dorsal attention
+TPOJ3_R,parietal,heteromodal,middle,dorsal attention
+DVT_R,frontal,unimodal,sensorimotor,visual
+PGp_R,parietal,unimodal,middle,dorsal attention
+IP2_R,frontal,heteromodal,middle,frontoparietal
+IP1_R,frontal,heteromodal,middle,frontoparietal
+IP0_R,parietal,unimodal,sensorimotor,dorsal attention
+PFop_R,parietal,heteromodal,middle,ventral attention
+PF_R,parietal,heteromodal,middle,ventral attention
+PFm_R,parietal,heteromodal,association,default mode
+PGi_R,parietal,heteromodal,association,default mode
+PGs_R,parietal,heteromodal,association,default mode
+V6A_R,frontal,unimodal,sensorimotor,visual
+VMV1_R,parietal,idiotypic,sensorimotor,visual
+VMV3_R,parietal,unimodal,sensorimotor,visual
+PHA2_R,parietal,heteromodal,middle,default mode
+V4t_R,parietal,unimodal,sensorimotor,visual
+FST_R,parietal,unimodal,sensorimotor,dorsal attention
+V3CD_R,parietal,unimodal,sensorimotor,visual
+LO3_R,parietal,unimodal,sensorimotor,visual
+VMV2_R,parietal,idiotypic,sensorimotor,visual
+31pd_R,frontal,heteromodal,middle,default mode
+31a_R,agranular,heteromodal,middle,default mode
+VVC_R,frontal,unimodal,sensorimotor,visual
+25_R,agranular,paralimbic,association,limbic
+s32_R,frontal,paralimbic,association,limbic
+pOFC_R,polar,paralimbic,middle,limbic
+PoI1_R,frontal,paralimbic,middle,ventral attention
+Ig_R,frontal,paralimbic,sensorimotor,somatosensory
+FOP5_R,frontal,heteromodal,association,ventral attention
+p10p_R,parietal,heteromodal,association,default mode
+p47r_R,frontal,heteromodal,association,frontoparietal
+TGv_R,frontal,paralimbic,middle,limbic
+MBelt_R,granular,unimodal,sensorimotor,somatosensory
+LBelt_R,parietal,idiotypic,sensorimotor,somatosensory
+A4_R,frontal,unimodal,middle,somatosensory
+STSva_R,frontal,unimodal,association,default mode
+TE1m_R,frontal,heteromodal,association,default mode
+PI_R,granular,unimodal,middle,ventral attention
+a32pr_R,frontal,heteromodal,association,frontoparietal
+p24_R,agranular,paralimbic,association,default mode

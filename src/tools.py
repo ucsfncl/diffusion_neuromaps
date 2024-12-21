@@ -68,9 +68,22 @@ def make_glasser_nulls(n_rep: int = 9999, random_state: int = 0) -> SpinPermutat
     """
     Make spin permutations for the Glasser atlas.
     """
-    pts = np.loadtxt("diffusion_neuromaps/atlases/glasser_pts.txt")
+    # pts = np.loadtxt("diffusion_neuromaps/atlases/glasser_spherical_pts.txt")
+    pts = np.loadtxt("microstructure/atlases/glasser_pts.txt")
     lh_pts = pts[:180]
     rh_pts = pts[180:]
+    gen = SpinPermutations(n_rep=n_rep, random_state=random_state)
+    gen.fit(lh_pts, points_rh=rh_pts)
+    return gen
+
+
+def make_dk_nulls(n_rep: int = 9999, random_state: int = 0) -> SpinPermutations:
+    """
+    Make spin permutations for the Desikan-Killiany atlas.
+    """
+    pts = np.loadtxt("diffusion_neuromaps/atlases/dk_spherical_pts.txt")
+    lh_pts = pts[:34]
+    rh_pts = pts[34:]
     gen = SpinPermutations(n_rep=n_rep, random_state=random_state)
     gen.fit(lh_pts, points_rh=rh_pts)
     return gen
@@ -95,4 +108,88 @@ def spin_test_glasser(gen: SpinPermutations, x: np.ndarray, y: np.ndarray, alt: 
         greater = (np.sum(surrogate_r > r) + 1) / (y_perm.shape[0] + 1)
         p = 2 * min(less, greater)
     return r, surrogate_r, p
+
+
+def spin_test_dk(gen: SpinPermutations, x: np.ndarray, y: np.ndarray, alt: str = "both"):
+    """
+    Performs a permuted spin test on the Desikan-Killiany atlas (controls for spatial autocorrelation).
+    """
+    nan_mask = np.isnan(y) | np.isnan(x)
+    r = np.corrcoef(x[~nan_mask], y[~nan_mask])[0, 1]
+    y_perm = np.hstack(gen.randomize(y[:34], y[34:]))
+    surrogate_r = np.zeros(y_perm.shape[0])
+    for i in range(y_perm.shape[0]):
+        nan_mask = np.isnan(y_perm[i, :]) | np.isnan(x)
+        surrogate_r[i] = np.corrcoef(x[~nan_mask], y_perm[i, ~nan_mask])[0, 1]
+    if alt == "lower":
+        p = (np.sum(surrogate_r < r) + 1) / (y_perm.shape[0] + 1)
+    elif alt == "greater":
+        p = (np.sum(surrogate_r > r) + 1) / (y_perm.shape[0] + 1)
+    else:
+        less = (np.sum(surrogate_r < r) + 1) / (y_perm.shape[0] + 1)
+        greater = (np.sum(surrogate_r > r) + 1) / (y_perm.shape[0] + 1)
+        p = 2 * min(less, greater)
+    return r, surrogate_r, p
+
+
+def spin_test_adj_glasser(gen: SpinPermutations, x: np.ndarray, y: np.ndarray, alt: str = "both"):
+    """
+    Performs a permuted spin test on the Glasser atlas (controls for spatial autocorrelation).
+    """
+    mask = np.logical_and(~np.isnan(x), ~np.isnan(y))
+    r = np.corrcoef(x[mask], y[mask])[0, 1]
+    x_mat = np.zeros((360, 360))
+    triu_indices = np.triu_indices(360, k=1)
+    tril_indices = np.tril_indices(360, k=-1)
+    x_mat[triu_indices] = x
+    x_mat[tril_indices] = x
+    perm_indices = np.hstack(gen.randomize(np.arange(180), np.arange(180, 360)))
+    surrogate_r = np.zeros(perm_indices.shape[0])   
+    for i in range(perm_indices.shape[0]):
+        surrogate_r[i] = np.corrcoef(x_mat[perm_indices[i], :][:, perm_indices[i]][triu_indices][mask], y[mask])[0, 1]
+    if alt == "lower":
+        p = (np.sum(surrogate_r <= r) + 1) / (perm_indices.shape[0] + 1)
+    elif alt == "greater":
+        p = (np.sum(surrogate_r >= r) + 1) / (perm_indices.shape[0] + 1)
+    else:
+        less = (np.sum(surrogate_r < r) + 1) / (perm_indices.shape[0] + 1)
+        greater = (np.sum(surrogate_r > r) + 1) / (perm_indices.shape[0] + 1)
+        p = 2 * min(less, greater)
+    return r, surrogate_r, p
+
+
+def spin_test_adj_dk(gen: SpinPermutations, x: np.ndarray, y: np.ndarray, alt: str = "both"):
+    """
+    Performs a permuted spin test on the Desikan-Killiany atlas (controls for spatial autocorrelation).
+    """
+    mask = np.logical_and(~np.isnan(x), ~np.isnan(y))
+    r = np.corrcoef(x[mask], y[mask])[0, 1]
+    x_mat = np.zeros((68, 68))
+    triu_indices = np.triu_indices(68, k=1)
+    tril_indices = np.tril_indices(68, k=-1)
+    x_mat[triu_indices] = x
+    x_mat[tril_indices] = x
+    perm_indices = np.hstack(gen.randomize(np.arange(34), np.arange(34, 68)))
+    surrogate_r = np.zeros(perm_indices.shape[0])
+    for i in range(perm_indices.shape[0]):
+        surrogate_r[i] = np.corrcoef(x_mat[perm_indices[i], :][:, perm_indices[i]][triu_indices][mask], y[mask])[0, 1]
+    if alt == "lower":
+        p = (np.sum(surrogate_r <= r) + 1) / (perm_indices.shape[0] + 1)
+    elif alt == "greater":
+        p = (np.sum(surrogate_r >= r) + 1) / (perm_indices.shape[0] + 1)
+    else:
+        less = (np.sum(surrogate_r < r) + 1) / (perm_indices.shape[0] + 1)
+        greater = (np.sum(surrogate_r > r) + 1) / (perm_indices.shape[0] + 1)
+        p = 2 * min(less, greater)
+    return r, surrogate_r, p
+
+
+def fdr_correction(pvals: Dict[str, float]) -> Dict[str, float]:
+    """
+    Perform FDR correction on a dictionary of p-values.
+    """
+    p = np.array(list(pvals.values()))
+    fdr_p = scipy.stats.false_discovery_control(p, method="bh")
+    return {metric: fdr_p[i] for i, metric in enumerate(pvals.keys())}
+
 
