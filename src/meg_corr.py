@@ -74,7 +74,7 @@ for name in meg_names:
 r_pred = {name: np.corrcoef(meg_pred[:, idx], meg_df[name].values.ravel().astype(float))[0, 1] for idx, name in enumerate(meg_names)}
 ### 5. What percentage of multivariate prediction is explained by the SA axis?
 sa_axis = pd.read_csv(os.path.join(metric_path, "neuromaps", "SAaxis_glasser_ave.csv"), index_col=0)
-r_sa_axis = {name: np.corrcoef(meg_pred[:, idx], sa_axis.values.ravel().astype(float))[0, 1] ** 2 for idx, name in enumerate(meg_names)}
+r_sa_axis = {name: np.corrcoef(meg_pred[:, idx], sa_axis.values.ravel().astype(float))[0, 1] ** 2 * 100 for idx, name in enumerate(meg_names)}
 
 ### 6. Plot the results
 plt.rcParams.update({'font.size': 12})
@@ -85,7 +85,7 @@ ax[0].set_title("A", loc="left", fontsize=14, fontweight="bold")
 ax[1].bar(r_sa_axis.keys(), r_sa_axis.values(), color="blue")
 ax[1].set_ylabel("% Variance Explained by SA Axis")
 ax[1].set_title("B", loc="left", fontsize=14, fontweight="bold")
-ax[2] = sns.boxplot(data=test_r,showfliers=False, ax=ax[2], color="blue")
+ax[2] = sns.boxplot(data=test_r, showfliers=False, ax=ax[2], color="blue")
 ax[2].set_ylabel("Test CV Correlation (R)")
 ax[2].set_xticks(np.arange(len(meg_names)), labels=["Delta", "Theta", "Alpha", "Beta", "Low Gamma", "High Gamma", "Timescale"])
 ax[2].set_xlabel("")
