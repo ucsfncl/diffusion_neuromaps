@@ -6,7 +6,19 @@ from factor_analyzer import FactorAnalyzer
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.patches as patches
-from tools import plot_glasser_map
+from tools import plot_glasser_map, plot_glasser_hemi
+
+
+def compute_li(df: pd.DataFrame) -> pd.DataFrame:
+    left_idx = [idx for idx in df.index if idx.endswith("_L")]
+    right_idx = [idx for idx in df.index if idx.endswith("_R")]
+    li_idx = [idx[:-2] for idx in left_idx]
+    df_lh = df.loc[left_idx].values.ravel().astype(float)
+    df_rh = df.loc[right_idx].values.ravel().astype(float)
+    li_data = df_lh - df_rh
+    li_df = pd.DataFrame(li_data, index=li_idx, columns=[df.columns[0] + "_li"])
+    li_df.index.name = "region"
+    return li_df
 
 
 metrics = ["fa", "md", "ad", "rd", "dki-fa", "dki-ad", "dki-rd", "dki-md", "mk", "ak", "rk", "kfa", "mkt",
@@ -48,6 +60,14 @@ for i in range(n_factors):
     plot_glasser_map(scores[:, i], size=(1600, 400), cmap="Reds", label_text=None, color_bar=False,
     nan_color=(255, 255, 255, 1), zoom=1.25, transparent_bg=False, interactive=False,
     screenshot=True, filename=os.path.join("diffusion_neuromaps", "plots", "glasser", f"F{i+1}_glasser_ave.png"))
+
+    df_li = compute_li(df)
+    df_li.to_csv(os.path.join("diffusion_neuromaps", "data", "glasser", "ave", f"F{i+1}_glasser_li.csv"))
+    plot_glasser_hemi(df_li.values.ravel(), layout = ["lh", "lh"], view=["lateral", "medial"], size=(800, 400), 
+    cmap="RdBu_r", label_text=None, color_bar=None, nan_color=(255, 255, 255, 1), share="row",
+    color_range="sym", zoom=1.25, transparent_bg=False, interactive=False, 
+    screenshot=True, filename=os.path.join("diffusion_neuromaps", "plots", "glasser", f"F{i+1}_glasser_li.png"))
+
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 4))
 ax = sns.heatmap(loadings.values.T[:n_factors, :], ax=ax, cmap="RdBu_r", square=True, yticklabels=[f"F{i+1}" for i in range(n_factors)], xticklabels=[metric.upper() for metric in metrics], cbar=False)

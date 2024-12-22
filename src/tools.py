@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Tuple
 import os
 import json
 import numpy as np
@@ -193,3 +193,78 @@ def fdr_correction(pvals: Dict[str, float]) -> Dict[str, float]:
     return {metric: fdr_p[i] for i, metric in enumerate(pvals.keys())}
 
 
+def df_pval(x: pd.DataFrame, y: pd.DataFrame, fdr: bool = True, n_rep: int = 9999) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    p = pd.DataFrame(index=x.columns, columns=y.columns, dtype=float)
+    r = pd.DataFrame(index=x.columns, columns=y.columns, dtype=float)
+    n_regions = x.shape[0]
+    gen = make_glasser_nulls(n_rep=n_rep) if n_regions == 360 else make_dk_nulls(n_rep=n_rep)
+
+    for i, x_col in enumerate(x.columns.to_list()):
+        for j, y_col in enumerate(y.columns.to_list()):
+            if n_regions == 360:
+                r.loc[x_col, y_col], _, p.loc[x_col, y_col] = spin_test_glasser(gen, x.values[:, i], y.values[:, j])
+            else:
+                r.loc[x_col, y_col], _, p.loc[x_col, y_col] = spin_test_dk(gen, x.values[:, i], y.values[:, j])
+    # Correct for multiple comparisons (row-wise)
+    if fdr:
+        for i, x_col in enumerate(p.index.to_list()):
+            p.loc[x_col, :] = scipy.stats.false_discovery_control(p.loc[x_col, :], method="bh")
+
+    return p, r
+
+
+def compute_multilinear(x: pd.DataFrame, y: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, np.ndarray]:
+    """
+    Compute the multilinear regression between x and y.
+    """
+    y_cols = y.columns.to_list()
+    n_rep = 9999
+    gen = make_glasser_nulls(n_rep=n_rep) if x.shape[0] == 360 else make_dk_nulls(n_rep=n_rep)
+    r_df = pd.DataFrame(index=y_cols, columns=["r"], dtype=float)
+    p_df = pd.DataFrame(index=y_cols, columns=["p"], dtype=float)
+    X = np.hstack((x.values, np.ones((x.shape[0], 1))))
+    w = np.linalg.lstsq(X, y.values, rcond=None)[0]
+    pred = np.dot(X, w)
+
+    for idx, y_col in enumerate(y_cols):
+        if x.shape[0] == 360:
+            r_df.loc[y_col, "r"], _, p_df.loc[y_col, "p"] = spin_test_glasser(gen, y.values[:, idx], pred[:, idx], alt="greater")
+        else:
+            r_df.loc[y_col, "r"], _, p_df.loc[y_col, "p"] = spin_test_dk(gen, y.values[:, idx], pred[:, idx], alt="greater")
+
+    p_df.loc[:, "p"] = scipy.stats.false_discovery_control(p_df.values.ravel(), method="bh")
+    return r_df, p_df, pred
+
+
+def compute_cv(x: pd.DataFrame, y: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Compute the cross-validated correlation between x and y.
+    """
+    if x.shape[0] == 360:
+        pts = np.loadtxt("diffusion_neuromaps/atlases/glasser_spherical_pts.txt")
+    else:
+        pts = np.loadtxt("diffusion_neuromaps/atlases/dk_spherical_pts.txt")
+
+    y_cols = y.columns.to_list()
+    n_rep = 9999
+    gen = make_glasser_nulls(n_rep=n_rep) if x.shape[0] == 360 else make_dk_nulls(n_rep=n_rep)
+    train_r_df = y.copy(deep=True)
+    test_r_df = y.copy(deep=True)
+    for col_idx, y_col in enumerate(y_cols):
+        for row_idx, y_row in enumerate(y.index.to_list()):
+            # find 25% nearest neighbors (90 for glasser, 17 for dk) to select test set
+            # Set the other 75% as the training set
+            dist = cdist(pts, pts[row_idx, :].reshape(1, -1))
+            nn_idx = np.argsort(dist, axis=0)[:x.shape[0] // 4].flatten()
+            X_test = np.hstack((x.values[nn_idx, :], np.ones((x.shape[0] // 4, 1))))
+            X_train = np.hstack((x.values[~np.isin(np.arange(x.shape[0]), nn_idx), :], np.ones((x.shape[0] - x.shape[0] // 4, 1))))
+            y_test = y.values[nn_idx, col_idx]
+            y_train = y.values[~np.isin(np.arange(x.shape[0]), nn_idx), col_idx]
+            w = np.linalg.lstsq(X_train, y_train, rcond=None)[0]
+            pred_train = np.dot(X_train, w)
+            pred_test = np.dot(X_test, w)
+
+            train_r_df.loc[y_row, y_col] = np.corrcoef(y_train, pred_train)[0, 1]
+            test_r_df.loc[y_row, y_col] = np.corrcoef(y_test, pred_test)[0, 1]
+
+    return train_r_df, test_r_df
