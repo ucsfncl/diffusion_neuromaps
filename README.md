@@ -16,7 +16,7 @@ See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 ## plots
 [plots](plots) folder contains all plots as .png files
 - [figs](plots/figs/) has figures showing the results of the analysis
-- [glasser] has figures showing various glasser maps
+- [glasser](plots/glasser/) has figures showing various glasser maps
 
 ## src
 [src](src) folder contains all code used for the analysis.
