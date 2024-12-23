@@ -3,20 +3,14 @@ import os
 import json
 import numpy as np
 import pandas as pd
-from scipy.spatial.distance import pdist, squareform, cdist
-from scipy.optimize import curve_fit
+from scipy.spatial.distance import cdist
 import scipy
 import scipy.stats
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-import seaborn as sns
 
 from nilearn.surface import load_surf_data
 from brainspace.mesh.mesh_io import read_surface
-from brainspace.mesh.mesh_elements import get_points 
-from brainspace.datasets import load_conte69
 from brainspace.plotting import plot_hemispheres, plot_surf
-from brainspace.null_models import SpinPermutations, MoranRandomization
+from brainspace.null_models import SpinPermutations
 from dominance_analysis import Dominance
 
 
@@ -59,10 +53,30 @@ def plot_glasser_hemi(arr: np.ndarray, **kwargs):
 
     plot_surf({"lh": lh_surf}, array_name=array_name, **kwargs)
 
-    # plot_surf({"lh": lh_surf}, layout = ["lh", "lh"], array_name=array_name, view=["lateral", "medial"], size=(800, 400), 
-    #           cmap="RdBu_r", label_text=label_text, color_bar=None, nan_color=(255, 255, 255, 1), share="row",
-    #           color_range="sym", zoom=1.25, transparent_bg=False, interactive=False, screenshot=True, filename=save_path)
+def plot_dk_map(df: pd.DataFrame, **kwargs):
+    """
+    Plot a Desikan-Killiany map with the given array values.
+    """
+    lh_dkt = load_surf_data("diffusion_neuromaps/atlases/Desikan.32k.L.label.gii")
+    rh_dkt = load_surf_data("diffusion_neuromaps/atlases/Desikan.32k.R.label.gii")
+    lh_stat = np.zeros(lh_dkt.shape)
+    rh_stat = np.zeros(rh_dkt.shape)
+    lh_stat.fill(np.nan)
+    rh_stat.fill(np.nan)
 
+    lh_surf = read_surface(os.path.join("diffusion_neuromaps", "atlases", "fs_LR.32k.L.very_inflated.surf.gii"))
+    rh_surf = read_surface(os.path.join("diffusion_neuromaps", "atlases", "fs_LR.32k.R.very_inflated.surf.gii"))
+
+    with open("diffusion_neuromaps/atlases/fslr_dk.json", "r") as f:
+        fslr_labels = json.load(f)
+    fslr_labels = {int(k): v for k, v in fslr_labels.items()}
+    dkt_regions = [f"lh.{val}" for val in fslr_labels.values()] + [f"rh.{val}" for val in fslr_labels.values()]
+
+    for key, val in fslr_labels.items():
+        lh_stat[lh_dkt == key] = df.loc[f"lh.{val}"]
+        rh_stat[rh_dkt == key] = df.loc[f"rh.{val}"]
+    
+    plot_hemispheres(lh_surf, rh_surf, array_name=np.concatenate((lh_stat, rh_stat)), **kwargs)
 
 def make_glasser_nulls(n_rep: int = 9999, random_state: int = 0) -> SpinPermutations:
     """
@@ -194,6 +208,9 @@ def fdr_correction(pvals: Dict[str, float]) -> Dict[str, float]:
 
 
 def df_pval(x: pd.DataFrame, y: pd.DataFrame, fdr: bool = True, n_rep: int = 9999) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Compute the p-values and correlations between x and y.
+    """
     p = pd.DataFrame(index=x.columns, columns=y.columns, dtype=float)
     r = pd.DataFrame(index=x.columns, columns=y.columns, dtype=float)
     n_regions = x.shape[0]
@@ -268,3 +285,22 @@ def compute_cv(x: pd.DataFrame, y: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataF
             test_r_df.loc[y_row, y_col] = np.corrcoef(y_test, pred_test)[0, 1]
 
     return train_r_df, test_r_df
+
+
+def compute_dominance(x: pd.DataFrame, y: pd.DataFrame, top_k: int = 5) -> pd.DataFrame:
+    """
+    Compute the dominance analysis between x and y.
+    """
+    x_cols = x.columns.to_list()
+    y_cols = y.columns.to_list()
+    dominance_df = pd.DataFrame(index=y_cols, columns=x_cols)
+    for i, y_col in enumerate(y_cols):
+        data = pd.concat([x, y[y_col]], axis=1)
+        dominance_regression=Dominance(data=data, target=y_col, objective=1, data_format=0, top_k=top_k)
+        dominance_regression.incremental_rsquare()
+        res = dominance_regression.dominance_stats()
+        print(res)
+        dominance_df.loc[y_col, :] = res["Percentage Relative Importance"]
+    dominance_df = dominance_df.astype(float)
+
+    return dominance_df

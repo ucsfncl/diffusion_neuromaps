@@ -91,3 +91,35 @@ for i in range(16, 21):
 fig.tight_layout()
 fig.savefig("diffusion_neuromaps/plots/figs/glasser_factor_loadings.png", dpi=400, bbox_inches="tight", pad_inches=0.05)
 plt.close(fig)
+
+
+subjects = np.loadtxt("diffusion_neuromaps/data/hcp_qc_subjects.txt", dtype=str)
+metrics = ["fa", "md", "ad", "rd", "dki-fa", "dki-ad", "dki-rd", "dki-md", "mk", "ak", "rk", "kfa", "mkt",
+              "icvf", "odi", "isovf", "msd", "qiv", "rtop", "rtap", "rtpp"]
+hcp_struct = np.zeros((len(metrics), len(subjects), 360))
+for idx, metric in enumerate(metrics):
+    hcp_struct[idx, :, :] = pd.read_csv(os.path.join(f"diffusion_neuromaps/data/glasser/subject/{metric}_glasser.csv"), index_col=0).values.astype(float)
+
+f1_df = pd.DataFrame(index=subjects, columns=regions, dtype=float)
+f2_df = pd.DataFrame(index=subjects, columns=regions, dtype=float)
+f3_df = pd.DataFrame(index=subjects, columns=regions, dtype=float)
+f4_df = pd.DataFrame(index=subjects, columns=regions, dtype=float)
+
+for idx in range(len(subjects)):
+    X = hcp_struct[:, idx, :].T
+    X = (X - np.mean(X, axis=0, keepdims=True)) / np.std(X, axis=0, keepdims=True)
+    scores = factor_analyzer.transform(X)
+    f1_df.iloc[idx, :] = scores[:, 0]
+    f2_df.iloc[idx, :] = scores[:, 1]
+    f3_df.iloc[idx, :] = scores[:, 2]
+    f4_df.iloc[idx, :] = scores[:, 3]
+
+f1_df.index.name = "subject"
+f2_df.index.name = "subject"
+f3_df.index.name = "subject"
+f4_df.index.name = "subject"
+
+f1_df.to_csv("diffusion_neuromaps/data/glasser/subject/F1_glasser.csv")
+f2_df.to_csv("diffusion_neuromaps/data/glasser/subject/F2_glasser.csv")
+f3_df.to_csv("diffusion_neuromaps/data/glasser/subject/F3_glasser.csv")
+f4_df.to_csv("diffusion_neuromaps/data/glasser/subject/F4_glasser.csv")
