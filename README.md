@@ -24,9 +24,11 @@ See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 - [factor_analysis](src/factor_analysis.py) performs factor analysis on the microstructural metrics
 - [get_spherical_pts](src/get_spherical_pts.py) obtains the spherical coordinates used for spin-permutation testing
 - [glasser_parc](src/glasser_parc.py) generates the Glasser parcellated data
+- [gradients](src/gradients.py) computes laplacian embedding of SCNs and performs some analyses
 - [meg_corr](src/meg_corr.py) performs MEG univariate and multivariate correlation analysis
 - [pet_corr](src/pet_corr.py) performs PET univariate and multivariate correlation analysis
 - [plot_glasser_corr](src/plot_glasser_corr.py) performs similarity analysis among the microstructural metrics
+- [plot_glasser_maps](src/plot_glasser_maps.py) plots the microstructural maps parcellated by the Glasser atlas
 - [scn_connectivity](src/scn_connectivity.py) perfoms SCN connectivity analysis
 - [scn_corr](src/scn_corr.py) correlates SCNs with FC & SC and gene & PET similarity and microstructure with their degree centrality
 - [scn](src/scn.py) generates structural covariance networks (SCNs) for each microstructural metric
