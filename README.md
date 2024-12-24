@@ -1,5 +1,5 @@
 # diffusion_neuromaps
-Code for microstructural mapping of the human cortex using diffusion MRI.
+Code for microstructural mapping of the human cortex using diffusion MRI.  
 See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 
 ![Microstructural Maps](plots/fig1.jpg)
@@ -9,7 +9,7 @@ See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 [atlases](atlases/) folder contains Glasser, DK, and various other maps/parcellations and coordinates
 
 ## data
-[data](data/) folder contains all relevant data needed to run almost all the code. We do not provide subjectwise fsLR32k data due to the large data requirements but do provide code for generating the data once you have downloaded the HCP dataset.
+[data](data/) folder contains all relevant data needed to run almost all the code. We do not provide subjectwise fsLR32k data due to the large data requirements but do provide code for generating the data once you have downloaded the HCP dataset. We do not provide the metadata for privacy reasons.
 - [disorders](data/disorders/) has the ENIGMA case-control effect size maps
 - [dk](data/dk/) has all the average, scn, and subject data parcellated by the DK atlas
 - [dominance](data/dominance/) has the dominance analysis results
@@ -57,7 +57,7 @@ See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 - [pls_pet](src/pls_pet.py) performs PLS regression on the PET receptor/transport density maps
 - [pls_score_analysis](src/pls_score_analysis.py) analyzes the PLS scores
 - [ridge_reg](src/ridge_reg.py) performs repeated five-fold cross-validated ridge regression
-- [sample_surfaces](src/sample_surfaces.py) Does volume-to-surface mapping from co-registered dMRI metric volumes to fsLR32k surfaces
+- [sample_surfaces](src/sample_surfaces.py) does volume-to-surface mapping from co-registered dMRI metric volumes to fsLR32k surfaces
 - [scn_connectivity](src/scn_connectivity.py) perfoms SCN connectivity analysis
 - [scn_corr](src/scn_corr.py) correlates SCNs with FC & SC and gene & PET similarity and microstructure with their degree centrality
 - [scn](src/scn.py) generates structural covariance networks (SCNs) for each microstructural metric
