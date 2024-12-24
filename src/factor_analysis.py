@@ -71,7 +71,7 @@ for i in range(n_factors):
 
 fig, ax = plt.subplots(1, 1, figsize=(10, 4))
 ax = sns.heatmap(loadings.values.T[:n_factors, :], ax=ax, cmap="RdBu_r", square=True, yticklabels=[f"F{i+1}" for i in range(n_factors)], xticklabels=[metric.upper() for metric in metrics], cbar=False)
-for i in range(n_factors):
+for i in range(len(metrics)):
     j_idx = np.argmax(np.abs(loadings.iloc[i, :]))
     ax.add_patch(patches.Rectangle((i, j_idx), 1, 1, fill=False, edgecolor="black", lw=1))
 ax.set_xticklabels([metric.upper() for metric in metrics], fontsize=16)
