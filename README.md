@@ -64,10 +64,10 @@ See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 - [tools](src/tools.py) has various utility functions used throughout the other scripts
 
 ## Acknowledgements
-Some sections of code are heavily borrowed from other repositories:
-See https://github.com/netneurolab/hansen_receptors/tree/main
-HCP-YA and MGH-USC data can be accessed and downloaded at https://www.humanconnectome.org.
-HCP-YA structural and functional connectivity matrices, cortical thickness and surface area case-control effect size maps for the neuropsychiatric disorders investigated, and processed gene expression data from the Allen Human Brain Atlas can be found using the ENIGMA toolbox: https://enigma-toolbox.readthedocs.io/en/latest/. 
-Volumetric PET images can be found at https://github.com/netneurolab/hansen_receptors or accessed using the neuromaps package: https://github.com/netneurolab/neuromaps. 
-Other relevant cortical maps can also be found using the neuromaps package. 
-BigBrain related data can be found using the BigBrainWarp package: https://github.com/caseypaquola/BigBrainWarp. 
+Some sections of code are heavily borrowed from other repositories:  
+See https://github.com/netneurolab/hansen_receptors/tree/main.  
+HCP-YA and MGH-USC data can be accessed and downloaded at https://www.humanconnectome.org.  
+HCP-YA structural and functional connectivity matrices, cortical thickness and surface area case-control effect size maps for the neuropsychiatric disorders investigated, and processed gene expression data from the Allen Human Brain Atlas can be found using the ENIGMA toolbox: https://enigma-toolbox.readthedocs.io/en/latest/.  
+Volumetric PET images can be found at https://github.com/netneurolab/hansen_receptors or accessed using the neuromaps package: https://github.com/netneurolab/neuromaps.  
+BigBrain related data can be found using the BigBrainWarp package: https://github.com/caseypaquola/BigBrainWarp.  
+Other relevant cortical maps can also be found using the neuromaps package.
