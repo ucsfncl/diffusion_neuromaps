@@ -2,6 +2,9 @@
 Code for microstructural mapping of the human cortex using diffusion MRI.
 See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 
+![Microstructural Maps](plots/fig1.jpg)
+
+
 ## atlases
 [atlases](atlases/) folder contains Glasser, DK, and various other maps/parcellations and coordinates
 
@@ -52,7 +55,9 @@ See preprint at https://www.biorxiv.org/content/10.1101/2024.09.27.615479v2
 - [plot_ridge](src/plot_ridge.py) plots the CV ridge regression reults
 - [pls_neuro](src/pls_neuro.py) performs PLS regression on the functional maps
 - [pls_pet](src/pls_pet.py) performs PLS regression on the PET receptor/transport density maps
+- [pls_score_analysis](src/pls_score_analysis.py) analyzes the PLS scores
 - [ridge_reg](src/ridge_reg.py) performs repeated five-fold cross-validated ridge regression
+- [sample_surfaces](src/sample_surfaces.py) Does volume-to-surface mapping from co-registered dMRI metric volumes to fsLR32k surfaces
 - [scn_connectivity](src/scn_connectivity.py) perfoms SCN connectivity analysis
 - [scn_corr](src/scn_corr.py) correlates SCNs with FC & SC and gene & PET similarity and microstructure with their degree centrality
 - [scn](src/scn.py) generates structural covariance networks (SCNs) for each microstructural metric
